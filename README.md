@@ -2,6 +2,6 @@
 
 Created by Brian Chairez
 
-This C++ project implements the std::list aka doubly linked list using dynamic nodes utilizing raw pointers.
+This C++ project implements the std::list aka the doubly linked list data structure using dynamic nodes utilizing raw pointers.
 Mmeory Management handled internally using "new" and "delete".
 Basic functionality complete.
