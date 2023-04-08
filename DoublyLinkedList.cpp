@@ -61,13 +61,13 @@ T& DoublyLinkedList<T>::operator=(const DoublyLinkedList<T>& other) {
 *****************************************************************************/
 //Returns data from the first node in the list !DO NOT USE WHEN LIST IS EMPTY!
 template <class T>
-T DoublyLinkedList<T>::front() {
+T DoublyLinkedList<T>::front() const {
     return head_->getData();
 }
 
 //Returns data from the last node in the list !DO NOT USE WHEN LIST IS EMPTY!
 template <class T>
-T DoublyLinkedList<T>::back() {
+T DoublyLinkedList<T>::back() const {
     Node<T>* curr_ptr = head_;
     while (curr_ptr->getNext() != nullptr) {
         curr_ptr = curr_ptr->getNext();
@@ -77,7 +77,7 @@ T DoublyLinkedList<T>::back() {
 }
 
 template <class T>
-Node<T>* DoublyLinkedList<T>::getHead() {
+Node<T>* DoublyLinkedList<T>::getHead() const {
     return head_;
 }
 
@@ -191,7 +191,7 @@ void DoublyLinkedList<T>::clear() {
 
 //Searches list for data to remove
 template <class T>
-void DoublyLinkedList<T>::remove(T& data) {
+void DoublyLinkedList<T>::remove(const T& data) {
     //Make sure its in the list before proceeding, exiting if not found.
     if (!contains(data)) {
         std::cout<< "The List does not contain " << data << ". Failed to perform remove()" << '\n';
@@ -239,7 +239,7 @@ void DoublyLinkedList<T>::remove(T& data) {
 
 //Searches for node containing replace to be overrided with data
 template <class T>
-void DoublyLinkedList<T>::replace(T& replace, T& data) {
+void DoublyLinkedList<T>::replace(const T& replace, const T& data) {
     if (!contains(replace)) {
         std::cout << "The list does not contain " << replace << ". Failed to perform replace()" << '\n';
         return;
@@ -251,30 +251,11 @@ void DoublyLinkedList<T>::replace(T& replace, T& data) {
     curr_node->setData(data);
 }
 
-//TO DO
-template <class T>
-void DoublyLinkedList<T>::reverse() {
-    Node<T>* curr_node = head_;
-    Node<T>* last_node = head_;
-    Node<T>* temp_node = head_;
-
-    //Travel to the last node of the list
-    while (curr_node->getNext() != nullptr) {
-        curr_node = curr_node->getNext();
-    }
-
-    //Reversal loop
-    while(last_node->getNext() != nullptr) {
-        //to do
-
-    }
-}
-
 /*****************************************************************************
     Data observation
 *****************************************************************************/
 template <class T>
-bool DoublyLinkedList<T>::contains(T& data) {
+bool DoublyLinkedList<T>::contains(const T& data) {
     if (empty()) {
         return false;
     }
@@ -297,7 +278,7 @@ bool DoublyLinkedList<T>::empty() const {
 }
 
 template <class T>
-int DoublyLinkedList<T>::count(T& data) {
+int DoublyLinkedList<T>::count(const T& data) {
     if (empty()) {
         std::cout << "The list is empty. Failed to perform count()" << '\n';
         return 0;
@@ -321,23 +302,6 @@ int DoublyLinkedList<T>::size() const {
     return size_;
 }
 
-template <class T>
-void DoublyLinkedList<T>::print() {
-    if (empty()){
-        std::cout<< "The list is empty. Failed to print." << '\n';
-        return;
-    }
-
-    Node<T>* curr_node = head_;
-
-    while (curr_node != nullptr) {
-        std::cout << curr_node->getData() << " -> ";
-        curr_node = curr_node->getNext();
-    }
-
-    std::cout<< "nullptr" << '\n';
-}
-
 /*****************************************************************************
     Private Functions
 *****************************************************************************/
@@ -356,16 +320,10 @@ void DoublyLinkedList<T>::deleteRecursive_(Node<T>*& node) {
 
 //Searching through the list knowing it exists. Recommended use after contains(data). RETURNS FIRST OCCURENCE
 template <class T>
-Node<T>* DoublyLinkedList<T>::search_(T& data) {
+Node<T>* DoublyLinkedList<T>::search_(const T& data) {
     Node<T>* curr_node = head_;
     while (curr_node->getData() != data) {
         curr_node = curr_node->getNext();
     }
     return curr_node;
-}
-
-//Copys all nodes from the head2 to head1
-template <class T>
-void deepCopy(Node<T>*& head1, Node<T>*& head2) {
-
 }

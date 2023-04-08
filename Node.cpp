@@ -7,7 +7,7 @@ template<class T>
 Node<T>::Node() : next_(nullptr), prev_(nullptr) {}
 
 template <class T>
-Node<T>::Node(T& data, Node<T>* next, Node<T>* prev): data_(data), next_(next), prev_(prev) {}
+Node<T>::Node(const T& data, Node<T>* next, Node<T>* prev): data_(data), next_(next), prev_(prev) {}
 
 template <class T>
 Node<T>::Node(const Node<T>*& other) {
@@ -33,22 +33,22 @@ Node<T>::~Node() {
     Data Observation/Modification
 *****************************************************************************/
 template <class T>
-T Node<T>::getData() {
+T Node<T>::getData() const {
     return data_;
 }
 
 template <class T>
-Node<T>* Node<T>::getNext() {
+Node<T>* Node<T>::getNext() const {
     return next_;
 }
 
 template <class T>
-Node<T>* Node<T>::getPrev() {
+Node<T>* Node<T>::getPrev() const {
     return prev_;
 }
 
 template <class T>
-void Node<T>::setData(T& data) {
+void Node<T>::setData(const T& data) {
     data_ = data;
 }
 
@@ -60,12 +60,4 @@ void Node<T>::setNext(Node<T>*& node) {
 template <class T>
 void Node<T>::setPrev(Node<T>*& node) {
     prev_ = node;
-}
-
-template <class T>
-void Node<T>::getInfo() {
-    std::cout << "Node data: " << data_ << '\n';
-    std::cout << "Node next: " << next_ << '\n';
-    std::cout << "Node previous: " << prev_ << '\n';
-    std::cout << '\n';
 }
