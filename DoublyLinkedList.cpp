@@ -131,7 +131,6 @@ void DoublyLinkedList<T>::push_front(T& data) {
 template <class T>
 void DoublyLinkedList<T>::pop_back() {
     if (empty()) {
-        std::cout<< "The List is empty. Failure to pop_back()" << '\n';
         return;
     }
 
@@ -160,7 +159,6 @@ void DoublyLinkedList<T>::pop_back() {
 template <class T>
 void DoublyLinkedList<T>::pop_front() {
     if (empty()) {
-        std::cout<< "The List is empty. Failure to execute pop_front()" << '\n';
         return;
     }
 
@@ -194,7 +192,6 @@ template <class T>
 void DoublyLinkedList<T>::remove(const T& data) {
     //Make sure its in the list before proceeding, exiting if not found.
     if (!contains(data)) {
-        std::cout<< "The List does not contain " << data << ". Failed to perform remove()" << '\n';
         return;
     }
 
@@ -241,7 +238,6 @@ void DoublyLinkedList<T>::remove(const T& data) {
 template <class T>
 void DoublyLinkedList<T>::replace(const T& replace, const T& data) {
     if (!contains(replace)) {
-        std::cout << "The list does not contain " << replace << ". Failed to perform replace()" << '\n';
         return;
     }
 
@@ -280,7 +276,6 @@ bool DoublyLinkedList<T>::empty() const {
 template <class T>
 int DoublyLinkedList<T>::count(const T& data) {
     if (empty()) {
-        std::cout << "The list is empty. Failed to perform count()" << '\n';
         return 0;
     }
 
