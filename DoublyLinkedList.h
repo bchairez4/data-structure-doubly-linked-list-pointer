@@ -2,7 +2,6 @@
 *    Brian Chairez                                                           *
 *    Goal: Manual implementation of std::List using dynamic nodes working as *
 *    a doubly linked list.                                                   *
-*    Progess: Basic implentation and methods complete.                       *
 *****************************************************************************/
 
 #ifndef DOUBLYLINKEDLIST_H
