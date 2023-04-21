@@ -34,7 +34,7 @@ class DoublyLinkedList {
         void clear();
         void remove(const T& data);
         void replace(const T& replace, const T& data);
-        bool contains(const T& data);
+        bool contains(const T& data) const;
         bool empty() const;
         int count(const T& data);
         int size() const;
