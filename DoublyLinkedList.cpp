@@ -267,7 +267,7 @@ void DoublyLinkedList<T>::replace(const T& replace, const T& data) {
 *****************************************************************************/
 // Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
-bool DoublyLinkedList<T>::contains(const T& data) {
+bool DoublyLinkedList<T>::contains(const T& data) const {
     if (empty()) {
         return false;
     }
