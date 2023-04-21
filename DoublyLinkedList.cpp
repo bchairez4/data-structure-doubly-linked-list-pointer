@@ -3,9 +3,11 @@
 /*****************************************************************************
     Constructors/ Destructor
 *****************************************************************************/
+// Time Complexity: O(1)
 template <class T>
 DoublyLinkedList<T>::DoublyLinkedList() : size_(0), head_(nullptr) {}
 
+// Time Complexity: O(N), where N is the number of nodes from the head pointer.
 template <class T>
 DoublyLinkedList<T>::DoublyLinkedList(Node<T>*& head) : size_(0), head_(nullptr) {
     if (head == nullptr) {
@@ -34,6 +36,7 @@ DoublyLinkedList<T>::DoublyLinkedList(Node<T>*& head) : size_(0), head_(nullptr)
     }
 }
 
+// Time Complexity: O(N), where N is the number of elements in other.
 template <class T>
 DoublyLinkedList<T>::DoublyLinkedList(DoublyLinkedList<T>& other) : size_(0), head_(nullptr) {
     DoublyLinkedList<T> temp(other.head_);
@@ -41,6 +44,7 @@ DoublyLinkedList<T>::DoublyLinkedList(DoublyLinkedList<T>& other) : size_(0), he
     size_ = temp.size();
 }
 
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 DoublyLinkedList<T>::~DoublyLinkedList() {
     clear();
@@ -49,6 +53,7 @@ DoublyLinkedList<T>::~DoublyLinkedList() {
 /*****************************************************************************
     Operator Overloading
 *****************************************************************************/
+// Time Complexity: O(N), where N is the number of elements in other.
 template <class T>
 T& DoublyLinkedList<T>::operator=(const DoublyLinkedList<T>& other) {
     DoublyLinkedList<T> temp(other.head_);
@@ -60,12 +65,14 @@ T& DoublyLinkedList<T>::operator=(const DoublyLinkedList<T>& other) {
     Data Manipulation
 *****************************************************************************/
 //Returns data from the first node in the list !DO NOT USE WHEN LIST IS EMPTY!
+// Time Complexity: O(1)
 template <class T>
 T DoublyLinkedList<T>::front() const {
     return head_->getData();
 }
 
 //Returns data from the last node in the list !DO NOT USE WHEN LIST IS EMPTY!
+// Time Complexity: O(1)
 template <class T>
 T DoublyLinkedList<T>::back() const {
     Node<T>* curr_ptr = head_;
@@ -76,12 +83,14 @@ T DoublyLinkedList<T>::back() const {
     return curr_ptr->getData();
 }
 
+// Time Complexity: O(1)
 template <class T>
 Node<T>* DoublyLinkedList<T>::getHead() const {
     return head_;
 }
 
 //Pushes data to the back of the list
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 void DoublyLinkedList<T>::push_back(T& data) {
     //If empty, place at the start of the list
@@ -107,6 +116,7 @@ void DoublyLinkedList<T>::push_back(T& data) {
 }
 
 //Pushes data to the front of the list
+// Time Complexity: O(1)
 template <class T>
 void DoublyLinkedList<T>::push_front(T& data) {
     // If empty directly place node in the front
@@ -128,6 +138,7 @@ void DoublyLinkedList<T>::push_front(T& data) {
 }
 
 //Removes last node from the list so long as it isnt empty
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 void DoublyLinkedList<T>::pop_back() {
     if (empty()) {
@@ -156,6 +167,7 @@ void DoublyLinkedList<T>::pop_back() {
 }
 
 //Removes first node from the list so long as it isnt empty
+// Time Complexity: O(1)
 template <class T>
 void DoublyLinkedList<T>::pop_front() {
     if (empty()) {
@@ -181,6 +193,7 @@ void DoublyLinkedList<T>::pop_front() {
 }
 
 //Erases the entire list (Recursively)
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 void DoublyLinkedList<T>::clear() {
     deleteRecursive_(head_);
@@ -188,6 +201,7 @@ void DoublyLinkedList<T>::clear() {
 }
 
 //Searches list for data to remove
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 void DoublyLinkedList<T>::remove(const T& data) {
     //Make sure its in the list before proceeding, exiting if not found.
@@ -235,6 +249,7 @@ void DoublyLinkedList<T>::remove(const T& data) {
 }
 
 //Searches for node containing replace to be overrided with data
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 void DoublyLinkedList<T>::replace(const T& replace, const T& data) {
     if (!contains(replace)) {
@@ -250,6 +265,7 @@ void DoublyLinkedList<T>::replace(const T& replace, const T& data) {
 /*****************************************************************************
     Data observation
 *****************************************************************************/
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 bool DoublyLinkedList<T>::contains(const T& data) {
     if (empty()) {
@@ -268,11 +284,12 @@ bool DoublyLinkedList<T>::contains(const T& data) {
     return false;
 }
 
-template <class T>
+// Time Complexity: O(1)
 bool DoublyLinkedList<T>::empty() const {
     return size_ == 0;
 }
 
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 int DoublyLinkedList<T>::count(const T& data) {
     if (empty()) {
@@ -292,6 +309,7 @@ int DoublyLinkedList<T>::count(const T& data) {
     return count;
 }
 
+// Time Complexity: O(1)
 template <class T>
 int DoublyLinkedList<T>::size() const {
     return size_;
@@ -301,6 +319,7 @@ int DoublyLinkedList<T>::size() const {
     Private Functions
 *****************************************************************************/
 //Recursively deletes entire list node by node.
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 void DoublyLinkedList<T>::deleteRecursive_(Node<T>*& node) {
     if (node == nullptr) {
@@ -314,6 +333,7 @@ void DoublyLinkedList<T>::deleteRecursive_(Node<T>*& node) {
 }
 
 //Searching through the list knowing it exists. Recommended use after contains(data). RETURNS FIRST OCCURENCE
+// Time Complexity: O(N), where N is the number of elements in the list.
 template <class T>
 Node<T>* DoublyLinkedList<T>::search_(const T& data) {
     Node<T>* curr_node = head_;
